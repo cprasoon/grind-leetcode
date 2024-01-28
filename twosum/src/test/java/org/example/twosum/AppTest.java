@@ -1,4 +1,4 @@
-package org.example;
+package org.example.twosum;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

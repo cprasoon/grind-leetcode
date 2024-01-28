@@ -1,9 +1,9 @@
-package org.example;
+package org.example.numsum;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.example.Helper.getList;
+import static org.example.numsum.Helper.getList;
 
 class NumSumTest {
 

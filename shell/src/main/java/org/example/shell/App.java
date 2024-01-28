@@ -1,4 +1,4 @@
-package org.example;
+package org.example.shell;
 
 public class App {
     public boolean someLibraryMethod() {
