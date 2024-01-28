@@ -17,7 +17,7 @@ public class ListNode {
     }
 
     public String print() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("[");
         ListNode ln = this;
         do {

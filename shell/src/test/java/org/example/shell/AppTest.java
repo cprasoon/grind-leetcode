@@ -3,10 +3,10 @@ package org.example.shell;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class AppTest {
+class AppTest {
 
     @Test
-    public void testApp(){
+    void testApp() {
         Assertions.assertTrue(new App().someLibraryMethod());
     }
 }

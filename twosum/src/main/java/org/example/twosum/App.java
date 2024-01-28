@@ -13,8 +13,7 @@ public class App {
             if (cache.containsKey(diff)) {
                 int targetIndex = cache.get(diff);
                 if (i != targetIndex) {
-                    int[] vals = {i, targetIndex};
-                    return vals;
+                    return new int[]{i, targetIndex};
                 }
             }
         }

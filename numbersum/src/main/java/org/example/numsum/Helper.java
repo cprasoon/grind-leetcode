@@ -3,6 +3,9 @@ package org.example.numsum;
 import java.util.ArrayList;
 
 public class Helper {
+    private Helper() {
+    }
+
     public static ListNode getList(int[] arr) {
         ArrayList<ListNode> list = new ArrayList<>();
         for (int i = arr.length; i > 0; i--) {

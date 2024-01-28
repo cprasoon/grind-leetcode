@@ -10,17 +10,17 @@ class AppTest {
         int[] vals = {3, 2, 4, 10, 24};
         int target = 14;
         int[] result = new App().twoSum(vals, target);
-        Assertions.assertEquals(result[0], 2);
-        Assertions.assertEquals(result[1], 3);
+        Assertions.assertEquals(2, result[0]);
+        Assertions.assertEquals(3, result[1]);
     }
 
     @Test
     void twoSumCheck2() {
-        int[] vals = {2,7,11,15};
+        int[] vals = {2, 7, 11, 15};
         int target = 9;
         int[] result = new App().twoSum(vals, target);
-        Assertions.assertEquals(result[0], 0);
-        Assertions.assertEquals(result[1], 1);
+        Assertions.assertEquals(0, result[0]);
+        Assertions.assertEquals(1, result[1]);
     }
 
     @Test
@@ -28,7 +28,7 @@ class AppTest {
         int[] vals = {};
         int target = 2;
         int[] result = new App().twoSum(vals, target);
-        Assertions.assertEquals(result[0], 0);
-        Assertions.assertEquals(result[1], 0);
+        Assertions.assertEquals(0, result[0]);
+        Assertions.assertEquals(0, result[1]);
     }
 }
