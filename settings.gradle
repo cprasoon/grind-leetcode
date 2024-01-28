@@ -11,4 +11,4 @@ rootProject.name = 'Leet code grind'
 include 'shell'
 include 'twosum'
 include 'numbersum'
-
+include 'longestsubstring'
