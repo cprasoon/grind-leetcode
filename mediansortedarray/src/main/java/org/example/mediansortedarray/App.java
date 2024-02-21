@@ -1,39 +1,89 @@
 package org.example.mediansortedarray;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class App {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int first = 0;
-        int second = 0;
-        List<Integer> merged = new ArrayList<>(nums1.length + nums2.length);
-        while (first < nums1.length && second < nums2.length) {
-            if (nums1[first] < nums2[second]) {
-                merged.add(nums1[first++]);
-            } else if (nums1[first] == nums2[second]) {
-                merged.add(nums1[first++]);
-                merged.add(nums2[second++]);
-            } else {
-                merged.add(nums2[second++]);
-            }
+
+        if (nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0) {
+            return handleEmptyArrays(nums1, nums2);
         }
-        if (first != nums1.length) {
-            while (first < nums1.length) {
-                merged.add(nums1[first++]);
-            }
-        }
-        if (second != nums2.length) {
-            while (second < nums2.length) {
-                merged.add(nums2[second++]);
-            }
-        }
-        double returnVal = 0.0d;
-        int mid = merged.size()/2;
-        if (merged.size() % 2 == 0) {
-            returnVal = ((double) merged.get(mid-1) + merged.get(mid))/2;
+
+        int total = nums1.length + nums2.length;
+        int midIndex = 0;
+        boolean findSecondVal = false;
+        if (total % 2 == 0) {
+            midIndex = (total / 2) - 1;
+            findSecondVal = true;
         } else {
-            returnVal = merged.get(mid);
+            midIndex = (total / 2);
+        }
+
+        int val1 = 0;
+        int val2 = 0;
+
+        int ptr1 = 0;
+        int ptr2 = 0;
+        boolean equalFlick = true;
+
+        for (int i = 0; i <= midIndex; i++) {
+            if (ptr1 == nums1.length) {
+                val1 = nums2[ptr2++];
+            } else if (ptr2 == nums2.length) {
+                val1 = nums1[ptr1++];
+            } else {
+                if (nums1[ptr1] < nums2[ptr2]) {
+                    val1 = nums1[ptr1++];
+                } else if (nums1[ptr1] > nums2[ptr2]) {
+                    val1 = nums2[ptr2++];
+                } else {
+                    if (equalFlick) {
+                        val1 = nums1[ptr1++];
+                    } else {
+                        val1 = nums2[ptr2++];
+                    }
+                    equalFlick = !equalFlick;
+                }
+            }
+        }
+        double result = val1;
+        if (findSecondVal) {
+            if (ptr1 == nums1.length) {
+                val2 = nums2[ptr2];
+            } else if (ptr2 == nums2.length) {
+                val2 = nums1[ptr1];
+            } else {
+                if (nums1[ptr1] <= nums2[ptr2]) {
+                    val2 = nums1[ptr1];
+                } else if (nums1[ptr1] > nums2[ptr2]) {
+                    val2 = nums2[ptr2];
+                }
+            }
+            result = ((double) val1 + (double) val2) / 2;
+        }
+        return result;
+    }
+
+    private double handleEmptyArrays(int[] nums1, int[] nums2) {
+        double returnVal = 0.0d;
+
+        if ((nums1 == null || nums1.length == 0) && (nums2 == null || nums2.length == 0)) {
+            returnVal = 0.0d;
+        } else if (nums1 == null || nums1.length == 0) {
+            returnVal = medianOfArray(nums2);
+        } else if (nums2 == null || nums2.length == 0) {
+            returnVal = medianOfArray(nums1);
+        }
+        return returnVal;
+    }
+
+    private double medianOfArray(int[] array) {
+        double returnVal;
+
+        if (array.length % 2 == 0) {
+            int mid = array.length / 2;
+            returnVal = (0.0d + (array[mid - 1]) + array[mid]) / 2;
+        } else {
+            int mid = array.length / 2;
+            returnVal = array[mid];
         }
         return returnVal;
     }
